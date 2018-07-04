@@ -1,0 +1,20 @@
+<templateSet group="Kotlin React">
+  <template name="krc" value="class $NAME$ : react.RComponent&lt;$NAME$.Props, $NAME$.State&gt;() {&#10;&#10;    override fun react.RBuilder.render() {&#10;        $END$&#10;    }&#10;    &#10;    class Props() : react.RProps&#10;    class State() : react.RState&#10;}&#10;&#10;fun react.RBuilder.$BUILDER_NAME$() = child($NAME$::class) {&#10;}" description="Defines a new Kotlin React Component" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="fileNameWithoutExtension()" defaultValue="&quot;MyComponent&quot;" alwaysStopAt="false" />
+    <variable name="BUILDER_NAME" expression="kotlinFunctionName()" defaultValue="camelCase(NAME)" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+
+  <template name="krc1" value="class $NAME$ : react.RComponent&lt;$NAME$.Props, $NAME$.State&gt;() {&#10;&#10;    override fun react.RBuilder.render() {&#10;        $END$&#10;    }&#10;    &#10;    class Props(var $PROP_NAME$: $PROP_TYPE$) : react.RProps&#10;    class State() : react.RState&#10;}&#10;&#10;fun react.RBuilder.$BUILDER_NAME$($PROP_NAME$: $PROP_TYPE$) = child($NAME$::class) {&#10;    attrs.$PROP_NAME$ = $PROP_NAME$&#10;}" description="Defines a new Kotlin React Component with 1 prop" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="fileNameWithoutExtension()" defaultValue="&quot;MyComponent&quot;" alwaysStopAt="true" />
+    <variable name="PROP_NAME" expression="" defaultValue="&quot;propertyName&quot;" alwaysStopAt="true" />
+    <variable name="PROP_TYPE" expression="kotlinClassName()" defaultValue="&quot;Any&quot;" alwaysStopAt="false" />
+    <variable name="BUILDER_NAME" expression="kotlinFunctionName()" defaultValue="camelCase(NAME)" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_TOPLEVEL" value="true" />
+    </context>
+  </template>
+
+</templateSet>
